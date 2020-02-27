@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <span>MemoFriends</span>
+</mat-toolbar>
+<button mat-raised-button color="primary" (click)=onStart()>Start</button>
+<button mat-raised-button color="primary" (click)=onReset()>Reset</button>
+<button mat-raised-button color="primary" (click)=onJoin()>Join</button>
+
+<mat-grid-list cols="4" rows="1">
+  <mat-grid-tile *ngFor="let card of cards">
+    <mat-card (click)="onClickCard(card.id)" class="matCard" [ngStyle]="{'background-color': getBackground(card)}">
+      <mat-card-content class="cardContent">
+       <div>
+        <i class="fas {{card.name}} fa-3x"></i>
+       </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  
+</mat-grid-list>
+<div>
+  <input disabled [value]="errors">
+</div>
+
