@@ -1,7 +1,9 @@
 package server
 
 import (
+	"log"
 	ws "memocards/websocket"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -13,6 +15,13 @@ var (
 
 //Start is the main func for starting server
 func Start() {
+
+	port := os.Getenv("PORT")
+
+	if port == "" {
+		log.Fatal("$PORT must be set")
+	}
+
 	hub = ws.NewHub()
 	go hub.Run()
 
@@ -20,7 +29,7 @@ func Start() {
 	r.Use(CORSMiddleware())
 	declareRoutes()
 
-	err := r.Run(":3001")
+	err := r.Run(":" + port)
 	if err != nil {
 		panic(err)
 	}

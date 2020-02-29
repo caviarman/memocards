@@ -15,9 +15,9 @@ func clientHandler(c *gin.Context) {
 	dir, file := path.Split(c.Request.RequestURI)
 	ext := filepath.Ext(file)
 	if file == "" || ext == "" {
-		c.File("./client/dist/client/index.html")
+		c.File("/go/src/memocards/client/dist/client/index.html")
 	} else {
-		c.File("./client/dist/client/" + path.Join(dir, file))
+		c.File("/go/src/memocards/client/dist/client/" + path.Join(dir, file))
 	}
 }
 
