@@ -6,4 +6,4 @@ RUN npm install -g -y @angular/cli
 RUN cd /go/src/memocards && make all
 RUN go install memocards
 ENTRYPOINT /go/bin/memocards
-EXPOSE 3001
+EXPOSE $PORT

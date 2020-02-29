@@ -119,7 +119,7 @@ ngOnInit() {
     location.reload();
   }
   onJoin() {
-    this.conn = webSocket('ws://' + document.location.host + '/ws?userID=' + this.userID);
+    this.conn = webSocket('wss://' + document.location.host + '/ws?userID=' + this.userID);
     this.conn.subscribe(req => {
       const {event, data} = req;
       if (!!event && !!data) {
